@@ -3,6 +3,7 @@ import { ActionsType } from './actions';
 import { type PossibleActionsType } from './possible_actions';
 import { type HoldemStateType, HoldemStateSchema } from './state';
 import { simple_pre } from './fake_games';
+import { StreetType } from './types';
 
 export function next(state: HoldemStateType): PossibleActionsType | Error {
 	const result = HoldemStateSchema.safeParse(state);
@@ -32,12 +33,22 @@ function makeTable(state: HoldemStateType): (ActionsType | string)[][] {
 	return table;
 }
 
+export function getStreet(state:HoldemStateType):StreetType {
+	
+
+	return 'preflop';
+}
+
 if (import.meta.vitest) {
 	const { describe, expect, it } = import.meta.vitest;
 
 	describe('engine.ts', () => {
 		it('simple_pre print build table', () => {
-			console.table(makeTable(simple_pre));
+			console.time('makeTable()');
+			const tbl = makeTable(simple_pre);
+			console.timeLog('makeTable()');
+			
+			//console.table(tbl);
 		});
 	});
 }
