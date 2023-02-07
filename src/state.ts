@@ -10,7 +10,7 @@ export type HoldemPlayerType = z.infer<typeof HoldemPlayerSchema>;
 
 export const HoldemStateSchema = z.object({
 	players: z.array(HoldemPlayerSchema),
-	actions: z.array(ActionsSchema)
+	actions: ActionsSchema.array().default([])
 });
 
 export type HoldemStateType = z.infer<typeof HoldemStateSchema>;

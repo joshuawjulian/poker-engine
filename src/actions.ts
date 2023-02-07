@@ -55,7 +55,7 @@ const DealerTurnAction = z.object({
 });
 
 const DealerRiverAction = z.object({
-	action: z.literal('River'),
+	action: z.literal('river'),
 	seat: z.literal('dealer'),
 	card: CardSchema
 });
